@@ -1971,12 +1971,11 @@ try:
                     resposta_analista
                 )
 
-                st.caption(
+                             st.caption(
                     "Generated from validated SEC financial data "
                     "and retrieved 10-K evidence."
                 )
 
-                # Mostrar evidências utilizadas
                 with st.expander(
                     "SEC Evidence Used"
                 ):
@@ -1998,7 +1997,7 @@ try:
                             evidencia["texto"]
                         )
 
-                        except Exception as erro:
+            except Exception as erro:
 
                 st.error(
                     "The AI analysis is temporarily unavailable."
@@ -2012,7 +2011,21 @@ try:
                     "Showing the validated financial-data "
                     "response instead."
                 )
+
                 resposta_fallback = (
+                    responder_pergunta_financeira(
+                        pergunta_analista,
+                        contexto_analista
+                    )
+                )
+
+                st.markdown(
+                    "#### Validated Data Response"
+                )
+
+                st.write(
+                    resposta_fallback
+                )
                     responder_pergunta_financeira(
                         pergunta_analista,
                         contexto_analista
