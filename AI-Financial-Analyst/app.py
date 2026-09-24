@@ -1998,17 +1998,20 @@ try:
                             evidencia["texto"]
                         )
 
-            except Exception as erro:
+                        except Exception as erro:
 
                 st.error(
                     "The AI analysis is temporarily unavailable."
+                )
+
+                st.code(
+                    f"{type(erro).__name__}: {erro}"
                 )
 
                 st.caption(
                     "Showing the validated financial-data "
                     "response instead."
                 )
-
                 resposta_fallback = (
                     responder_pergunta_financeira(
                         pergunta_analista,
